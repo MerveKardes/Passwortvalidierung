@@ -82,4 +82,28 @@ class PasswordValidatorTest {
     void shouldReturnFalseForNullWhenCheckingLowercase() {
         assertFalse(PasswordValidator.containsLowercase(null));
     }
+    @Test
+    void shouldDetectCommonPassword() {
+        assertTrue(PasswordValidator.isCommonPassword("Passwort1"));
+    }
+
+    @Test
+    void shouldDetectCommonPasswordIgnoringCase() {
+        assertTrue(PasswordValidator.isCommonPassword("PASSWORD"));
+    }
+
+    @Test
+    void shouldDetectCommonPasswordIgnoringSurroundingSpaces() {
+        assertTrue(PasswordValidator.isCommonPassword("  Passwort1  "));
+    }
+
+    @Test
+    void shouldReturnFalseForUncommonPassword() {
+        assertFalse(PasswordValidator.isCommonPassword("MySecurePassword1"));
+    }
+
+    @Test
+    void shouldReturnFalseForNullWhenCheckingCommonPassword() {
+        assertFalse(PasswordValidator.isCommonPassword(null));
+    }
 }
