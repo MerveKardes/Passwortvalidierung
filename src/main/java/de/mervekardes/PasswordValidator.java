@@ -123,4 +123,23 @@ public class PasswordValidator {
         return false;
     }
 
+    public static boolean containsSpecialChar(String password, String allowed) {
+        if (password == null || allowed == null) {
+            return false;
+        }
+
+        char[] passwordCharacters = password.toCharArray();
+        char[] allowedCharacters = allowed.toCharArray();
+
+        for (char passwordCharacter : passwordCharacters) {
+            for (char allowedCharacter : allowedCharacters) {
+                if (passwordCharacter == allowedCharacter) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 }
