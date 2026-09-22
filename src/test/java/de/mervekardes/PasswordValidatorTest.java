@@ -106,4 +106,51 @@ class PasswordValidatorTest {
     void shouldReturnFalseForNullWhenCheckingCommonPassword() {
         assertFalse(PasswordValidator.isCommonPassword(null));
     }
+
+    @Test
+    void shouldAcceptValidPassword() {
+        assertTrue(PasswordValidator.isValid("Abcdef1g"));
+    }
+
+    @Test
+    void shouldRejectPasswordShorterThanEightCharacters() {
+        assertFalse(PasswordValidator.isValid("Abc1def"));
+    }
+
+    @Test
+    void shouldRejectPasswordWithoutDigit() {
+        assertFalse(PasswordValidator.isValid("Abcdefgh"));
+    }
+
+    @Test
+    void shouldRejectPasswordWithoutUppercaseLetter() {
+        assertFalse(PasswordValidator.isValid("abcdefg1"));
+    }
+
+    @Test
+    void shouldRejectPasswordWithoutLowercaseLetter() {
+        assertFalse(PasswordValidator.isValid("ABCDEFG1"));
+    }
+
+    @Test
+    void shouldRejectCommonPassword() {
+        assertFalse(PasswordValidator.isValid("Passwort1"));
+    }
+
+    @Test
+    void shouldRejectPasswordContainingOnlyDigits() {
+        assertFalse(PasswordValidator.isValid("98765432"));
+    }
+
+    @Test
+    void shouldRejectNullPassword() {
+        assertFalse(PasswordValidator.isValid(null));
+    }
+
+    @Test
+    void shouldAcceptVeryLongValidPassword() {
+        assertTrue(PasswordValidator.isValid(
+                "ThisIsAVeryLongAndSecurePassword123456789"
+        ));
+    }
 }
