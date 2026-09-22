@@ -53,4 +53,33 @@ class PasswordValidatorTest {
     void shouldReturnFalseForNullWhenCheckingDigit() {
         assertFalse(PasswordValidator.containsDigit(null));
     }
+    @Test
+    void shouldDetectUppercaseLetter() {
+        assertTrue(PasswordValidator.containsUppercase("Abcdefg1"));
+    }
+
+    @Test
+    void shouldReturnFalseWhenUppercaseIsMissing() {
+        assertFalse(PasswordValidator.containsUppercase("abcdefg1"));
+    }
+
+    @Test
+    void shouldReturnFalseForNullWhenCheckingUppercase() {
+        assertFalse(PasswordValidator.containsUppercase(null));
+    }
+
+    @Test
+    void shouldDetectLowercaseLetter() {
+        assertTrue(PasswordValidator.containsLowercase("ABCDefg1"));
+    }
+
+    @Test
+    void shouldReturnFalseWhenLowercaseIsMissing() {
+        assertFalse(PasswordValidator.containsLowercase("ABCDEFG1"));
+    }
+
+    @Test
+    void shouldReturnFalseForNullWhenCheckingLowercase() {
+        assertFalse(PasswordValidator.containsLowercase(null));
+    }
 }
