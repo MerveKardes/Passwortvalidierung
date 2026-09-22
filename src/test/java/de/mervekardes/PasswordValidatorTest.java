@@ -172,4 +172,53 @@ class PasswordValidatorTest {
     void shouldReturnFalseForNullWhenCheckingLetter() {
         assertFalse(PasswordValidator.containsLetter(null));
     }
+    @Test
+    void shouldDetectAllowedSpecialCharacter() {
+        assertTrue(
+                PasswordValidator.containsSpecialChar(
+                        "Abcdef1!",
+                        "!@#$%&*"
+                )
+        );
+    }
+
+    @Test
+    void shouldReturnFalseWhenSpecialCharacterIsMissing() {
+        assertFalse(
+                PasswordValidator.containsSpecialChar(
+                        "Abcdefg1",
+                        "!@#$%&*"
+                )
+        );
+    }
+
+    @Test
+    void shouldRejectSpecialCharacterOutsideAllowedSet() {
+        assertFalse(
+                PasswordValidator.containsSpecialChar(
+                        "Abcdef1_",
+                        "!@#$%&*"
+                )
+        );
+    }
+
+    @Test
+    void shouldReturnFalseForNullWhenCheckingSpecialCharacter() {
+        assertFalse(
+                PasswordValidator.containsSpecialChar(
+                        null,
+                        "!@#$%&*"
+                )
+        );
+    }
+
+    @Test
+    void shouldReturnFalseWhenAllowedSpecialCharactersAreNull() {
+        assertFalse(
+                PasswordValidator.containsSpecialChar(
+                        "Abcdef1!",
+                        null
+                )
+        );
+    }
 }
