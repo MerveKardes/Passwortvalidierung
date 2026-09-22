@@ -4,6 +4,8 @@ import java.util.Locale;
 import java.util.Set;
 
 public class PasswordValidator {
+    private static final int MIN_PASSWORD_LENGTH = 8;
+
     private static final Set<String> COMMON_PASSWORDS = Set.of(
             "password",
             "passwort1",
@@ -12,6 +14,30 @@ public class PasswordValidator {
     );
 
     private PasswordValidator() {
+    }
+
+    public static boolean isValid(String password) {
+        if (!hasMinLength(password, MIN_PASSWORD_LENGTH)) {
+            return false;
+        }
+
+        if (!containsDigit(password)) {
+            return false;
+        }
+
+        if (!containsUppercase(password)) {
+            return false;
+        }
+
+        if (!containsLowercase(password)) {
+            return false;
+        }
+
+        if (isCommonPassword(password)) {
+            return false;
+        }
+
+        return true;
     }
 
     public static boolean hasMinLength(String password, int min) {

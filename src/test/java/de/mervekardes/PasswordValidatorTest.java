@@ -20,7 +20,7 @@ class PasswordValidatorTest {
     }
 
     @Test
-    void shouldRejectNullPassword() {
+    void shouldRejectNullPasswordForMinimumLength() {
         assertFalse(PasswordValidator.hasMinLength(null, 8));
     }
 
@@ -143,7 +143,7 @@ class PasswordValidatorTest {
     }
 
     @Test
-    void shouldRejectNullPassword() {
+    void shouldRejectNullPasswordForCompleteValidation() {
         assertFalse(PasswordValidator.isValid(null));
     }
 
