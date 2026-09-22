@@ -1,6 +1,16 @@
 package de.mervekardes;
 
+import java.util.Locale;
+import java.util.Set;
+
 public class PasswordValidator {
+    private static final Set<String> COMMON_PASSWORDS = Set.of(
+            "password",
+            "passwort1",
+            "12345678",
+            "aa345678"
+    );
+
     private PasswordValidator() {
     }
 
@@ -54,6 +64,18 @@ public class PasswordValidator {
         }
 
         return false;
+    }
+
+    public static boolean isCommonPassword(String password) {
+        if (password == null) {
+            return false;
+        }
+
+        String normalizedPassword = password
+                .trim()
+                .toLowerCase(Locale.ROOT);
+
+        return COMMON_PASSWORDS.contains(normalizedPassword);
     }
 
 }
