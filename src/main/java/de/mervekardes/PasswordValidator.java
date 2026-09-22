@@ -20,6 +20,9 @@ public class PasswordValidator {
         if (!hasMinLength(password, MIN_PASSWORD_LENGTH)) {
             return false;
         }
+        if (!containsLetter(password)) {
+            return false;
+        }
 
         if (!containsDigit(password)) {
             return false;
@@ -102,6 +105,22 @@ public class PasswordValidator {
                 .toLowerCase(Locale.ROOT);
 
         return COMMON_PASSWORDS.contains(normalizedPassword);
+    }
+
+    public static boolean containsLetter(String password) {
+        if (password == null) {
+            return false;
+        }
+
+        char[] characters = password.toCharArray();
+
+        for (char character : characters) {
+            if (Character.isLetter(character)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }
