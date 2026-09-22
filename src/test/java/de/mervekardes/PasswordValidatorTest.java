@@ -1,9 +1,13 @@
 package de.mervekardes;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 class PasswordValidatorTest {
 
@@ -224,5 +228,23 @@ class PasswordValidatorTest {
     @Test
     void shouldRejectPasswordWithoutSpecialCharacter() {
         assertFalse(PasswordValidator.isValid("Abcdef1g"));
+    }
+
+    @ParameterizedTest(name = "{index}: isValid({0}) should return {1}")
+    @CsvSource({
+            "'Abcdef1!', true",
+            "'StrongPassword9@', true",
+            "'Abc1de!', false",
+            "'Abcdefg!', false",
+            "'abcdef1!', false",
+            "'ABCDEFG1!', false",
+            "'Abcdef1g', false",
+            "'Aa345678', false"
+    })
+    void shouldValidatePasswordsUsingMultipleTestCases(
+            String password,
+            boolean expected
+    ) {
+        assertEquals(expected, PasswordValidator.isValid(password));
     }
 }
