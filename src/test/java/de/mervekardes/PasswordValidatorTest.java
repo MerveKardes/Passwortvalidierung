@@ -153,4 +153,23 @@ class PasswordValidatorTest {
                 "ThisIsAVeryLongAndSecurePassword123456789"
         ));
     }
+    @Test
+    void shouldDetectUppercaseAsLetter() {
+        assertTrue(PasswordValidator.containsLetter("123A456"));
+    }
+
+    @Test
+    void shouldDetectLowercaseAsLetter() {
+        assertTrue(PasswordValidator.containsLetter("123a456"));
+    }
+
+    @Test
+    void shouldReturnFalseWhenPasswordContainsNoLetter() {
+        assertFalse(PasswordValidator.containsLetter("12345678"));
+    }
+
+    @Test
+    void shouldReturnFalseForNullWhenCheckingLetter() {
+        assertFalse(PasswordValidator.containsLetter(null));
+    }
 }
