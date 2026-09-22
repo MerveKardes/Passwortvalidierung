@@ -109,7 +109,7 @@ class PasswordValidatorTest {
 
     @Test
     void shouldAcceptValidPassword() {
-        assertTrue(PasswordValidator.isValid("Abcdef1g"));
+        assertTrue(PasswordValidator.isValid("Abcdef1!"));
     }
 
     @Test
@@ -150,7 +150,7 @@ class PasswordValidatorTest {
     @Test
     void shouldAcceptVeryLongValidPassword() {
         assertTrue(PasswordValidator.isValid(
-                "ThisIsAVeryLongAndSecurePassword123456789"
+                "ThisIsAVeryLongAndSecurePassword123456789!"
         ));
     }
     @Test
@@ -220,5 +220,9 @@ class PasswordValidatorTest {
                         null
                 )
         );
+    }
+    @Test
+    void shouldRejectPasswordWithoutSpecialCharacter() {
+        assertFalse(PasswordValidator.isValid("Abcdef1g"));
     }
 }
