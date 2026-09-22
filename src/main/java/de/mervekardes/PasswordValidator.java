@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class PasswordValidator {
     private static final int MIN_PASSWORD_LENGTH = 8;
+    private static final String ALLOWED_SPECIAL_CHARACTERS = "!@#$%&*";
 
     private static final Set<String> COMMON_PASSWORDS = Set.of(
             "password",
@@ -33,6 +34,9 @@ public class PasswordValidator {
         }
 
         if (!containsLowercase(password)) {
+            return false;
+        }
+        if (!containsSpecialChar(password, ALLOWED_SPECIAL_CHARACTERS)) {
             return false;
         }
 
