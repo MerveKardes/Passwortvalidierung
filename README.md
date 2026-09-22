@@ -140,4 +140,4 @@ Folgende Bonusaufgaben wurden umgesetzt:
 
 - Sonderzeichenprüfung mit einer definierten erlaubten Zeichenmenge
 - parametrisierte Tests mit JUnit 5 und `@ParameterizedTest`
-- Kommandozeilenanwendung mit `Scanner`
+- Kommandozeilenanwendung mit `Scanner` und konkreten Fehlermeldungen
