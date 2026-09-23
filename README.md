@@ -9,7 +9,6 @@ Ein testgetrieben entwickeltes Java-Projekt zur Validierung von Passwörtern.
 Ein gültiges Passwort muss:
 
 - mindestens 8 Zeichen lang sein,
-- mindestens einen Buchstaben enthalten,
 - mindestens einen Großbuchstaben enthalten,
 - mindestens einen Kleinbuchstaben enthalten,
 - mindestens eine ASCII-Ziffer von `0` bis `9` enthalten,
@@ -23,7 +22,6 @@ Ein gültiges Passwort muss:
 Die Klasse `PasswordValidator` stellt folgende Methoden bereit:
 
 - `hasMinLength(String password, int min)`
-- `containsLetter(String password)`
 - `containsDigit(String password)`
 - `containsUppercase(String password)`
 - `containsLowercase(String password)`

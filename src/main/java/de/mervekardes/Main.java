@@ -15,6 +15,7 @@ public final class Main {
 
         System.out.print("Bitte geben Sie ein Passwort ein: ");
         String password = scanner.nextLine();
+        scanner.close();
 
         if (PasswordValidator.isValid(password)) {
             System.out.println("Das Passwort ist gültig.");
@@ -31,12 +32,6 @@ public final class Main {
         )) {
             System.out.println(
                     "- Das Passwort muss mindestens 8 Zeichen lang sein."
-            );
-        }
-
-        if (!PasswordValidator.containsLetter(password)) {
-            System.out.println(
-                    "- Das Passwort muss mindestens einen Buchstaben enthalten."
             );
         }
 
